@@ -1,22 +1,20 @@
+let members=[]
  document.getElementById('duration').addEventListener('input', function() {
     const table = document.getElementById('teamMembersTable');
     table.classList.remove('hidden');
-});
-
-document.getElementById('duration').addEventListener('input', function() {
     const role = document.getElementById('role').value;
     const level = document.getElementById('level').value;
     const region = document.getElementById('region').value;
     const numberOfPeople = document.getElementById('numberOfPeople').value;
     const duration = document.getElementById('duration').value;
-
+    
     if (role && level && region && duration) {
         const membersList = document.getElementById('membersList');
         const newRow = document.createElement('tr');
-
+    
         // You may need to customize cost calculation based on inputs
         const cost = calculateCost(role, level, region, numberOfPeople, duration);
-
+    
         newRow.innerHTML = `
             <td>${role}</td>
             <td>${level}</td>
@@ -25,20 +23,29 @@ document.getElementById('duration').addEventListener('input', function() {
             <td>${duration}</td>
             <td>${cost} €</td>
         `;
-        
+        members.push(newRow)
         membersList.appendChild(newRow);
         updatePriceIndicator();
+        
     } else {
         alert("Please fill in all fields.");
     }
+
 });
 
 document.getElementById('removeMemberBtn').addEventListener('click', function() {
     const membersList = document.getElementById('membersList');
-    if (membersList.lastChild) {
-        membersList.removeChild(membersList.lastChild);
-        updatePriceIndicator();
-    }
+    
+        if (membersList.lastChild) {
+            membersList.removeChild(membersList.lastChild);
+            members.pop(); // Correctly remove the last member from the array
+            if(members.length==0){
+                const memberTable = document.getElementById('teamMembersTable');
+                memberTable.style.display = 'none';
+            }
+            updatePriceIndicator();
+        }
+    
 });
 
 function calculateCost(role, level, region, numberOfPeople, duration) {
@@ -56,4 +63,4 @@ function updatePriceIndicator() {
     }
     
     document.getElementById('priceIndicator').innerText = `Price indication: ${totalCost} €`;
-} 
+}
