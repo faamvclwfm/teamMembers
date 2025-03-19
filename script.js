@@ -1,9 +1,9 @@
-document.getElementById('duration').addEventListener('input', function() {
+ document.getElementById('duration').addEventListener('input', function() {
     const table = document.getElementById('teamMembersTable');
     table.classList.remove('hidden');
 });
 
-document.getElementById('addMemberBtn').addEventListener('click', function() {
+document.getElementById('duration').addEventListener('input', function() {
     const role = document.getElementById('role').value;
     const level = document.getElementById('level').value;
     const region = document.getElementById('region').value;
@@ -56,4 +56,4 @@ function updatePriceIndicator() {
     }
     
     document.getElementById('priceIndicator').innerText = `Price indication: ${totalCost} €`;
-}
+} 
