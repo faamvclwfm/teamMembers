@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Member Form</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="form-container">
+        <form id="teamMemberForm">
+            <select id="role">
+                <option value="">Select Role</option>
+                <option value="IT Project Manager">IT Project Manager</option>
+                <!-- Add more options as needed -->
+            </select>
+
+            <select id="level">
+                <option value="">Select Level</option>
+                <option value="Midlevel">Midlevel</option>
+                <!-- Add more options as needed -->
+            </select>
+
+            <select id="region">
+                <option value="">Select Region</option>
+                <option value="Eastern Europe">Eastern Europe</option>
+                <!-- Add more options as needed -->
+            </select>
+
+            <input type="number" id="numberOfPeople" value="1" min="1">
+            <input type="number" id="duration" placeholder="Duration (month)" min="1">
+            
+            <button type="button" id="addMemberBtn">Add Team Member</button>
+            <button type="button" id="removeMemberBtn">Remove</button>
+        </form>
+        
+        <div id="teamMembersTable" class="hidden">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Role</th>
+                        <th>Level</th>
+                        <th>Region</th>
+                        <th>Number</th>
+                        <th>Duration</th>
+                        <th>Cost</th>
+                    </tr>
+                </thead>
+                <tbody id="membersList"></tbody>
+            </table>
+            <div id="priceIndicator">Price indication:</div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
